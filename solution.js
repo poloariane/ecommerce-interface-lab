@@ -17,7 +17,6 @@ function checkVariable(input) {
             return "unknown";
     }
 }
-
 // Problem 2: Secure ID Generator
 function generateIDs(count) {
     const ids = [];
