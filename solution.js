@@ -66,3 +66,45 @@ class Item {
         return this.price - (this.price * this.#discount);
     }
 }
+
+// Problem 6: Robust Division
+function safeDivide(a, b) {
+
+    try {
+
+        if (b === 0) {
+            throw new Error("Cannot divide by zero");
+        }
+
+        return a / b;
+
+    } catch (error) {
+
+        return error.message;
+
+    } finally {
+
+        console.log("Operation attempted");
+
+    }
+}
+
+
+// TESTS
+console.log(checkVariable("hello"));
+console.log(generateIDs(7));
+console.log(calculateTotal(10, 20, 30));
+
+const players = [
+    {name: "Alice", score: 10},
+    {name: "Bob", score: 5},
+    {name: "Charlie", score: 9}
+];
+
+console.log(getTopScorers(players));
+
+const item = new Item("Product", 100);
+console.log(item.finalPrice);
+
+console.log(safeDivide(10, 2));
+console.log(safeDivide(10, 0));
