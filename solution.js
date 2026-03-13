@@ -31,3 +31,16 @@ function generateIDs(count) {
 
     return ids;
 }
+
+// Problem 3: The Functional Sum
+function calculateTotal(...numbers) {
+
+    numbers.forEach(num => {
+        if (typeof num !== "number") {
+            throw new TypeError("Invalid input: All arguments must be numbers");
+        }
+    });
+
+    return numbers.reduce((total, num) => total + num, 0);
+}
+
