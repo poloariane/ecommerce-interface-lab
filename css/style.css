@@ -1,0 +1,144 @@
+:root {
+    --primary-color: #56156f;
+    --accent-color: #a818b5;
+    --bg-light: #eeeeeec9;
+    --bg-dark: #290627f7;
+    --text-main: #2c2c2c;
+    --text-light: #fff;
+    --text-hover: #a4a4a4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    box-sizing: border-box; /* added for responsiveness */
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    font-family: sans-serif;
+    align-items: center;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+}
+
+h1 { color: var(--primary-color); }
+h2, h3 { color: var(--accent-color); }
+
+p { color: var(--text-main); }
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+a:hover {
+    color: var(--text-hover);
+} 
+
+.btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: font-size 0.2s ease, padding 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: var(--text-main);
+    font-size: 1rem;
+    padding: 0.7rem 0.8rem;
+}
+
+.input {
+    width: fit-content;
+    max-width: 100%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Make images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Queries */
+
+/* Mobile (default already mobile friendly) */
+
+/* Tablet */
+@media (min-width: 481px) {
+
+    .cart li {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .dashboard {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+
+    header, nav {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        gap: 1rem;
+    }
+
+    .product-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    aside.filter {
+        width: 25%;
+        float: left;
+        margin: 0;
+    }
+
+    .product-list {
+        width: 75%;
+        float: right;
+    }
+
+    .checkout-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .checkout-container .shipping-address {
+        flex: 2;
+    }
+
+    .checkout-container .order-sum {
+        flex: 1;
+    }
+}
