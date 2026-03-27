@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/account.css" />
+    <title>My Account</title>
+  </head>
+  <body>
+    <header>
+      <a id="lg"><h2>My Account</h2></a>
+      <nav>
+        <a href="landing.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a id="logout" href="signup.html">Logout</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="account-container">
+        <div class="account-header">
+          <div class="acc-head">
+            <div class="welcome-section">
+              <h1>Welcome, Ariane!</h1>
+              <div class="categories-nav">
+                <ul>
+                  <li><a href="#">Profile Settings</a></li>
+                  <li><a href="#">Wishlists</a></l>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="dashboard">
+          <article class="card">
+            <h3>Total Orders</h3>
+            <p id="total-orders" class="font-white">0 Orders</p>
+          </article>
+
+          <article class="card">
+            <h3>Pending Orders</h3>
+            <p id="pending-orders" class="font-white">0 Order</p>
+          </article>
+
+          <article class="card">
+            <h3>Saved Items</h3>
+            <p id="saved-items" class="font-white">3 Items</p>
+          </article>
+        </section>
+
+        <section class="order-history-section">
+          <h2>Previous Purchases</h2>
+          <div id="order-history-container"></div>
+        </section>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

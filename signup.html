@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/signup.css" />
+    <title>Create Account | MyShop-Pay</title>
+  </head>
+  <body>
+
+    <div class="signup-container">
+      <div class="signup-header">
+        <div class="signup-title">
+          <span class="signup-icon"></span>
+          <h1>Create Account</h1>
+        </div>
+        <p class="signup-subtitle">Join us and start shopping today</p>
+      </div>
+
+      <div class="signup-card">
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" class="input" placeholder="Ariane M. Polo" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="input" placeholder="hello@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="input" placeholder="••••••" />
+            <small class="password-hint">Must be at least 6 characters</small>
+          </div>
+
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="terms-checkbox" />
+              <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+            </label>
+          </div>
+
+          <button type="submit" class="signup-btn" id="sg-btn">Create Account</button>
+
+          <div class="login-link">
+            <p>Already have an account? <a href="login.html">Log in</a></p>
+          </div>
+        </form>
+      </div>
+
+      <div class="signup-benefits">
+        <h3>Why join us?</h3>
+        <ul>
+          <li>✓ Exclusive member discounts</li>
+          <li>✓ Track orders & view history</li>
+          <li>✓ Faster checkout process</li>
+          <li>✓ Save items to wishlist</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

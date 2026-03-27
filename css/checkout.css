@@ -1,0 +1,468 @@
+:root {
+    --primary-color: #56156f;
+    --accent-color: #a818b5;
+    --bg-light: #eeeeeec9;
+    --bg-dark: #290627f7;
+    --text-main: #2c2c2c;
+    --text-light: #fff;
+    --text-hover: #a4a4a4;
+    --border-radius-card: 1rem;
+    --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+/* Header Styles - Same as Landing Page and Cart */
+header, nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    padding-bottom: 0;
+    padding-top: 0;
+    flex-wrap: wrap;
+}
+
+header {
+    background-color: var(--bg-dark);
+}
+
+nav {
+    margin: 0;
+    color: var(--primary-color);
+    flex-wrap: wrap;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--bg-light);
+    padding: 1rem;
+    transition: all 0.2s ease;
+}
+
+header a:hover {
+    background-color: var(--primary-color);
+    cursor: pointer;
+    border-bottom: solid 2px ghostwhite;
+}
+
+#lg:hover {
+    background-color: var(--primary-color);
+    color: var(--text-hover);
+    border-bottom: none;
+}
+
+/* Checkout Container - Same max-width as cart container */
+.checkout-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Checkout Header - Same border-bottom style as cart-header */
+.checkout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: solid 2px var(--primary-color);
+}
+
+.cart-title-style {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cart-icon-lg {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    display: inline-block;
+    animation: gentleBounce 0.5s ease;
+}
+
+.checkout-header h1 {
+    color: var(--primary-color);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Back Button - Same as cart page */
+.back-btn {
+    background-color: var(--text-hover);
+    color: var(--text-light);
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.back-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateX(-5px);
+}
+
+/* 2-Column Grid Layout */
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 0.5rem;
+}
+
+/* Shipping Card - Matches cart item dark card style */
+.shipping-card {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    border-radius: var(--border-radius-card);
+    padding: 1.8rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.shipping-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.shipping-card h2 {
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    font-size: 1.6rem;
+    letter-spacing: -0.2px;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #f0f0f0;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: white;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(168, 24, 181, 0.2);
+}
+
+/* Right Panel Container */
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+/* Payment Card - Light style with consistent border */
+.payment-card {
+    background-color: white;
+    border-radius: var(--border-radius-card);
+    padding: 1.5rem;
+    border: 1px solid rgba(86, 21, 111, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.2s;
+}
+
+.payment-card h3 {
+    color: var(--primary-color);
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.radio-group {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    background: #f8f8f8;
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
+    transition: background 0.2s;
+}
+
+.radio-label input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.radio-label:hover {
+    background-color: #f0eef1;
+}
+
+/* Order Summary Card - Same style as subtotal block from cart.css */
+.order-summary-card {
+    background: linear-gradient(135deg, var(--bg-light) 0%, #fff 100%);
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    padding: 1.6rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.order-summary-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.9rem 0;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.summary-row.total-row {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    border-top: 1.5px solid #ddd;
+    padding-top: 0.9rem;
+    margin-top: 0.8rem;
+}
+
+/* Place Order Button */
+.place-order-btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    letter-spacing: 0.3px;
+}
+
+.place-order-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(86, 21, 111, 0.25);
+}
+
+/* Empty Cart Message */
+.empty-cart-message {
+    margin-top: 2rem;
+    text-align: center;
+    font-style: italic;
+    color: var(--text-main);
+}
+
+.empty-cart-message a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.empty-cart-message a:hover {
+    text-decoration: underline;
+}
+
+.empty-cart-message p {
+    color: var(--text-main);
+}
+
+/* Animation for cart icon - Same as cart page */
+@keyframes gentleBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.cart-title-style:hover .cart-icon-lg {
+    animation: gentleBounce 0.6s ease;
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+
+/* Hover effects for cards */
+.shipping-card, .payment-card {
+    transition: transform 0.25s ease, box-shadow 0.2s;
+}
+
+/* ========== RESPONSIVE STYLES - Same as cart.css ========== */
+
+/* Tablet and Desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .checkout-container {
+        max-width: 95%;
+    }
+    .checkout-grid {
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    header, nav {
+        padding: 0.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    nav {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    header a {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    #lg h2 {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    
+    .checkout-container {
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
+    
+    .checkout-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .cart-title-style {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .back-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .checkout-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .shipping-card {
+        padding: 1.3rem;
+    }
+    
+    .payment-card, .order-summary-card {
+        padding: 1.2rem;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+    
+    .radio-label {
+        width: fit-content;
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+    .checkout-container {
+        margin: 0.75rem auto;
+        padding: 0 0.75rem;
+    }
+    
+    .cart-icon-lg {
+        font-size: 1.6rem;
+    }
+    
+    .checkout-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .shipping-card h2 {
+        font-size: 1.3rem;
+    }
+    
+    .order-summary-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .form-group input {
+        padding: 0.65rem 0.9rem;
+        font-size: 0.9rem;
+    }
+    
+    .place-order-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    header a {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Tablet specific adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .checkout-container {
+        max-width: 90%;
+    }
+}

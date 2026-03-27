@@ -1,0 +1,369 @@
+:root {
+    --primary-color: #56156f;
+    --accent-color: #a818b5;
+    --bg-light: #eeeeeec9;
+    --bg-dark: #290627f7;
+    --text-main: #2c2c2c;
+    --text-light: #fff;
+    --text-hover: #a4a4a4;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.4;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header, nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    padding-bottom: 0;
+    padding-top: 0;
+    flex-wrap: wrap;
+}
+
+header {
+    background-color: var(--bg-dark);
+}
+
+nav {
+    margin: 0;
+    color: var(--primary-color);
+    flex-wrap: wrap;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--bg-light);
+    padding: 1rem;
+    transition: all 0.2s ease;
+}
+
+header a:hover {
+    background-color: var(--primary-color);
+    cursor: pointer;
+    border-bottom: solid 2px ghostwhite;
+}
+
+#lg:hover {
+    background-color: var(--primary-color);
+    color: var(--text-hover);
+    border-bottom: none;
+}
+
+/* Signup Container */
+.signup-container {
+    max-width: 550px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Header */
+.signup-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: solid 2px var(--primary-color);
+}
+
+.signup-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.signup-icon {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    display: inline-block;
+}
+
+.signup-header h1 {
+    color: var(--primary-color);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin: 0;
+}
+
+.signup-subtitle {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* Card */
+.signup-card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.signup-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+.form-group .input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background-color: #fafafa;
+}
+
+.form-group .input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(168, 24, 181, 0.1);
+    background-color: white;
+}
+
+.form-group .input.error {
+    border-color: var(--error-color);
+    background-color: #fff8f8;
+}
+
+.password-hint {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+
+/* Checkbox */
+.checkbox-group {
+    margin: 1.5rem 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-label span a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.checkbox-label span a:hover {
+    text-decoration: underline;
+}
+
+/* Signup Button */
+.signup-btn {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+}
+
+.signup-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(86, 21, 111, 0.3);
+}
+
+.signup-btn:active {
+    transform: translateY(0);
+}
+
+/* Login Link */
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.login-link p {
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.login-link a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Benefits Section */
+.signup-benefits {
+    background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(86, 21, 111, 0.1);
+}
+
+.signup-benefits h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.signup-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.signup-benefits ul li {
+    padding: 0.5rem 0;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+/* Error Message Styling */
+.error-message {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    color: var(--error-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header, nav {
+        padding: 0.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    nav {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    header a {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    #lg h2 {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    
+    .signup-container {
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
+    
+    .signup-card {
+        padding: 1.5rem;
+    }
+    
+    .form-group .input {
+        padding: 0.75rem;
+    }
+    
+    .signup-btn {
+        padding: 0.8rem;
+    }
+    
+    .signup-benefits ul li {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-container {
+        margin: 0.75rem auto;
+        padding: 0 0.75rem;
+    }
+    
+    .signup-card {
+        padding: 1.25rem;
+    }
+    
+    .signup-title h1 {
+        font-size: 1.5rem;
+    }
+    
+    .signup-icon {
+        font-size: 1.6rem;
+    }
+    
+    .form-group label {
+        font-size: 0.85rem;
+    }
+    
+    .form-group .input {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+    
+    .signup-btn {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+    
+    .checkbox-label {
+        font-size: 0.85rem;
+    }
+    
+    .signup-benefits {
+        padding: 1rem;
+    }
+    
+    .signup-benefits h3 {
+        font-size: 1rem;
+    }
+}

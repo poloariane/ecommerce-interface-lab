@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+    <title>Product Listing View</title>
+  </head>
+  <body>
+    <header>
+      <a id="lg"><h2>MyShop-Pay</h2></a>
+      <nav>
+        <a href="landing.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="account.html">My Account</a>
+      </nav>
+    </header>
+    
+    <div class="page-header">
+      <h1>Products</h1>
+    </div>
+    
+    <main class="product-list">
+      <article>
+        <img src="beauty-face-cream-sensitive-skin-moisturizing-luxury-spa-cosmetic-natural-complexion-skincare-product-emerald-background_360074-34325.avif" alt="" />
+        <h2>Product 1</h2>
+        <p class="price-text">Price: &#8369 330</p>
+        <p class="category-text">Category: Cosmetics</p>
+        <a href="detail.html?id=1">View Details</a>
+        <button class="btn add-to-cart-btn" data-id="1">Add to Cart</button>
+      </article>
+
+      <article>
+        <img src="beautyblender2.jpg" alt="" />
+        <h2>Product 2</h2>
+        <p class="price-text">Price: &#8369 210</p>
+        <p class="category-text">Category: Cosmetics</p>
+        <a href="detail.html?id=2">View Details</a>
+        <button class="btn add-to-cart-btn" data-id="2">Add to Cart</button>
+      </article>
+
+      <article>
+        <img src="pngtree-luxury-cosmetic-products-illustration-free-photo-png-image_16480005.png" alt="" />
+        <h2>Product 3</h2>
+        <p class="price-text">Price: &#8369 480</p>
+        <p class="category-text">Category: Cosmetics</p>
+        <a href="detail.html?id=3">View Details</a>
+        <button class="btn add-to-cart-btn" data-id="3">Add to Cart</button>
+      </article>
+    </main>
+
+    <aside class="filter">
+      <h2>Filter</h2>
+      <form>
+        <h3>Category</h3>
+        <input type="checkbox" name="category" />Cosmetics<br />
+        <input type="checkbox" name="category" />Clothes<br />
+        <input type="checkbox" name="category" />Food<br />
+
+        <h3>Price</h3>
+        <input type="radio" name="price" />Expensive<br />
+        <input type="radio" name="price" />Cheap<br />
+      </form>
+    </aside>
+    <script src="script.js"></script>
+  </body>
+</html>

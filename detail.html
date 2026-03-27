@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <title>Product Detail View</title>
+  </head>
+  <body>
+    <header>
+      <a id="lg"><h2>MyShop-Pay</h2></a>
+      <nav>
+        <a href="landing.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="account.html">My Account</a>
+      </nav>
+    </header>
+    
+    <div class="product-details-container">
+      <div class="product-details">
+        <div class="product-image">
+          <img id="product-img" src="" alt="Product Image" />
+        </div>
+        
+        <div class="product-info">
+          <div class="product-header">
+            <h2 id="product-name">Product Name</h2>
+            <button class="btn back-button-detail" onclick="window.location.href='products.html'">Back</button>
+          </div>
+          <h3 id="product-price" class="price-large">Price: ₱0</h3>
+          <h3 id="product-category" class="category-text">Category: Cosmetics</h3>
+          
+          <div class="table1">
+            <table>
+              <tr>
+                <th>Specifications</th>
+                <th>Details</th>
+              </tr>
+              <tr>
+                <th>Brand</th>
+                <td id="product-brand">Olay</td>
+              </tr>
+              <tr>
+                <th>Color</th>
+                <td id="product-color">White</td>
+              </tr>
+              <tr>
+                <th>Stock Status</th>
+                <td id="product-stock">In Stock</td>
+              </tr>
+            </table>
+          </div>
+
+          <form class="quantity">
+            <label for="quantity-input">Quantity:</label>
+            <input type="number" id="quantity-input" value="1" min="1" />
+            <button type="button" class="btn add-to-cart-detail" data-id="">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <section class="user-review">
+      <h2 id="user-rw">User Reviews</h2>
+      <div class="reviews-container">
+        <div class="review-card">
+          <div class="review-header">
+            <strong>User1</strong>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <blockquote>"Very good quality product! Highly recommended."</blockquote>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <strong>User2</strong>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <blockquote>"Great product, fast shipping. Will buy again."</blockquote>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <strong>User3</strong>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <blockquote>"Exactly as described. Very satisfied with my purchase."</blockquote>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

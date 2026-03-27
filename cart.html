@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+    <title>The Shopping Cart</title>
+  </head>
+  <body>
+    <header>
+      <a id="lg"><h2>MyShop-Pay</h2></a>
+      <nav>
+        <a href="landing.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="account.html">My Account</a>
+      </nav>
+    </header>
+    
+    <div class="cart-container">
+      <div class="cart-header">
+        <div class="cart-title">
+          <span class="cart-icon">🛒</span>
+          <h1>Your Cart</h1>
+        </div>
+      </div>
+      
+      <div class="cart">
+        <ul class="cart-items-list">
+          <!-- Cart items will be dynamically inserted here -->
+        </ul>
+        <div class="empty-cart-message">
+          <p>Your cart is currently empty.</p>
+        </div>
+      </div>
+
+      <section class="subtotal"><h2>Subtotal: ₱0</h2></section>
+
+      <div class="checkout-btn">
+        <a href="checkout.html" class="btn">Proceed to Checkout</a>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

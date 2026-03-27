@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/landing.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>MyShop-Pay - Your Online Shopping Destination</title>
+  </head>
+  <body>
+    <header>
+      <a id="lg"><h2>MyShop-Pay</h2></a>
+      <nav>
+        <a href="landing.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="account.html">My Account</a>
+      </nav>
+    </header>
+
+    <section class="categories">
+      <ul>
+        <li>
+          <a href="products.html?category=Appliances">Appliances</a>
+        </li>
+        <li>
+          <a href="products.html?category=Books">Books</a>
+        </li>
+        <li>
+          <a href="products.html?category=Cosmetics">Cosmetics</a>
+        </li>
+        <li>
+          <a href="products.html?category=Clothes">Clothes</a>
+        </li>
+        <li>
+          <a href="products.html?category=Groceries">Groceries</a>
+        </li>
+        <li>
+          <a href="products.html?category=Food">Food</a>
+        </li>
+        <li>
+          <a href="products.html?category=Furniture">Furniture</a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="hero">
+      <h1>Welcome to MyShop-Pay</h1>
+      <p>Find the best products at affordable prices!</p>
+      <p>
+        <button class="btn shop-now-btn" onclick="location.href = 'products.html'">
+          Shop Now
+        </button>
+      </p>
+    </section>
+
+    <section class="featured-products">
+      <div class="section-header">
+        <h1>Featured Products</h1>
+        <p>Check out our best-sellers!</p>
+      </div>
+      <div class="products-grid" id="featured-products-grid">
+        <!-- Featured products will be loaded here dynamically -->
+      </div>
+    </section>
+
+    <section class="discounted-products">
+      <div class="section-header">
+        <h1>Discounted Products</h1>
+        <p>Limited time offers available now!</p>
+      </div>
+      <div class="products-grid" id="discounted-products-grid">
+        <!-- Discounted products will be loaded here dynamically -->
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2024 MyShop-Pay. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+  </body>
+</html>

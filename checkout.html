@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MyShop-Pay · Secure Checkout</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <header>
+        <a id="lg"><h2>MyShop-Pay</h2></a>
+        <nav>
+            <a href="landing.html">Home</a>
+            <a href="products.html">Shop</a>
+            <a href="cart.html">Cart</a>
+            <a href="account.html">My Account</a>
+        </nav>
+    </header>
+
+    <div class="checkout-container">
+        <div class="checkout-header">
+            <div class="cart-title-style">
+                <span class="cart-icon-lg">🛍️</span>
+                <h1>Checkout</h1>
+            </div>
+        </div>
+
+        <div class="checkout-grid">
+            <div class="shipping-card">
+                <h2>Shipping Information</h2>
+                <div class="form-group">
+                    <label>Full name</label>
+                    <input type="text" id="fullName" placeholder="Ariane M. Polo" required>
+                </div>
+                <div class="form-group">
+                    <label>Country</label>
+                    <input type="text" id="country" placeholder="Philippines" required>
+                </div>
+                <div class="form-group">
+                    <label>Province</label>
+                    <input type="text" id="province" placeholder="Northern Samar" required>
+                </div>
+                <div class="form-group">
+                    <label>Municipality / City</label>
+                    <input type="text" id="city" placeholder="Catarman" required>
+                </div>
+                <div class="form-group">
+                    <label>Street / Barangay</label>
+                    <input type="text" id="street" placeholder="Geronimo St." required>
+                </div>
+                <div class="form-group">
+                    <label>Zip Code</label>
+                    <input type="number" id="zip" placeholder="6400" min="1000" required>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="payment-card">
+                    <h3>Payment Method</h3>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="paymentMethod" value="credit_card" checked> Credit Card
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="paymentMethod" value="paypal"> PayPal
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="paymentMethod" value="gcash"> GCash / Maya
+                        </label>
+                    </div>
+                </div>
+
+                <div class="order-summary-card">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="summarySubtotal">₱0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping fee</span>
+                        <span id="summaryShipping">₱50</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (12% VAT)</span>
+                        <span id="summaryTax">₱0</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total</span>
+                        <span id="summaryTotal">₱0</span>
+                    </div>
+                    <button class="place-order-btn" id="placeOrderBtn">Place Order</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="empty-cart-message" style="display: none;">
+            <p>Your cart is currently empty. <a href="products.html">Continue Shopping</a></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
