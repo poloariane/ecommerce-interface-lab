@@ -1,0 +1,146 @@
+:root {
+    --primary-color: #56156f;
+    --accent-color: #a818b5;
+    --bg-light: #f3f3f3;
+    --bg-dark: #290627f7;
+    --text-main: #2c2c2c;
+    --text-light: #fff;
+    --text-hover: #a4a4a4;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #56156f, #a818b5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* CONTAINER */
+.signup-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+/* CARD DESIGN */
+.signup-card {
+    background: white;
+    border-radius: 15px;
+    padding: 35px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* TITLE */
+.signup-card h1 {
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* FORM GROUP */
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* INPUT */
+.input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+
+    border-radius: 8px;
+    border: 1px solid #ccc;
+
+    font-size: 14px;
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(168, 24, 181, 0.4);
+}
+
+/* BUTTON */
+.signup-btn {
+    width: 100%;
+    margin-top: 10px;
+
+    background: var(--primary-color);
+    color: white;
+
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signup-btn:hover {
+    background: var(--accent-color);
+}
+
+/* LOGIN LINK */
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* ======================= */
+/* TABLET RESPONSIVE */
+/* ======================= */
+
+@media (max-width:768px) {
+
+    .signup-card {
+        padding: 30px;
+    }
+
+}
+
+/* ======================= */
+/* MOBILE RESPONSIVE */
+/* ======================= */
+
+@media (max-width:480px) {
+
+    .signup-card {
+        padding: 25px;
+    }
+
+    .signup-card h1 {
+        font-size: 24px;
+    }
+
+}
