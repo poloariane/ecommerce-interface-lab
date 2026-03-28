@@ -1,0 +1,145 @@
+:root {
+    --primary-color: #56156f;
+    --accent-color: #a818b5;
+    --bg-light: #eeeeeec9;
+    --bg-dark: #290627f7;
+    --text-main: #2c2c2c;
+    --text-light: #fff;
+    --text-hover: #a4a4a4;
+}
+
+body {
+    padding: 2rem;
+}
+
+.back-btn {
+    margin-top: 1rem;
+    margin-right: 3rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    float: right;
+}
+
+.back-btn:hover {
+    background-color: var(--bg-dark);
+}
+
+/* HEADINGS */
+h2 {
+    color: var(--accent-color);
+    background-color: #2c2c2c;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+h3 {
+    color: var(--bg-dark);
+}
+
+/* SECTION CONTAINER */
+section {
+    width: 80vw;
+    background-color: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: space-between;
+    border: solid 2px gray;
+    border-radius: 1rem 4rem;
+    padding: 2rem;
+    padding-top: 1rem;
+    flex-wrap: wrap; /* allows children to wrap on smaller screens */
+    box-sizing: border-box;
+    animation: fadeIn 0.8s ease forwards
+}
+
+/* FORM */
+form {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+/* SHIPPING ADDRESS */
+.shipping-address {
+    background-color: var(--text-light);
+    color: var(--primary-color);
+    padding: 1rem;
+    border: solid 1px gray;
+    border-radius: 1rem;
+    flex: 1 1 45%; /* flexible width, min 45% */
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+}
+
+/* PAYMENT AND ORDER SUMMARY */
+.payment {
+    flex: 1 1 45%;
+    background-color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: solid 1px gray;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    padding: 2rem;
+    padding-top: 1rem;
+}
+
+/* ORDER SUMMARY */
+.order-sum {
+    border: solid 2px #0000001f;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* INPUT FIELDS FULL WIDTH */
+.input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: .5rem;
+    box-sizing: border-box;
+}
+
+#radio-btn {
+    margin-left: 1rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+/* Tablet */
+@media (max-width: 768px) {
+    section {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .shipping-address,
+    .payment {
+        flex: 1 1 48%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    section {
+        flex-direction: column;
+        width: 95%;
+        padding: 0.5rem;
+    }
+
+    .shipping-address,
+    .payment {
+        flex: 1 1 100%;
+        margin-bottom: 1rem;
+    }
+
+    .order-sum {
+        width: 100%;
+    }
+}
