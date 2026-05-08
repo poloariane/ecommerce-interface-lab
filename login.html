@@ -133,6 +133,7 @@
             }
 
             function setCsrfTokenFromDocument(doc) {
+                // Spring Security commonly exposes CSRF as a hidden _csrf input or meta tags.
                 const tokenField = doc.querySelector('input[name="_csrf"]');
                 const tokenMeta = doc.querySelector('meta[name="_csrf"]');
                 const parameterMeta = doc.querySelector('meta[name="_csrf_parameter"]');
@@ -151,6 +152,7 @@
                 if (csrfInput?.value) return;
 
                 try {
+                    // Keep credentials same-origin so the server can bind the CSRF token to the session.
                     const response = await fetch('/login', {
                         method: 'GET',
                         credentials: 'same-origin',
@@ -178,23 +180,23 @@
                 clearFieldError(passwordInput, passwordErrorDiv);
 
                 if (!email) {
-                    emailErrorDiv.textContent = 'Email address is required';
+                    emailErrorDiv.textContent = 'Please enter your email address.';
                     emailInput.classList.add('error');
                     isValid = false;
                 } else if (!email.includes('@') || !email.includes('.')) {
-                    emailErrorDiv.textContent = 'Please enter a valid email address';
+                    emailErrorDiv.textContent = 'Please enter a valid email address.';
                     emailInput.classList.add('error');
                     isValid = false;
                 }
 
                 if (!password) {
-                    passwordErrorDiv.textContent = 'Password is required';
+                    passwordErrorDiv.textContent = 'Please enter your password.';
                     passwordInput.classList.add('error');
                     isValid = false;
                 }
 
                 if (!csrfInput?.value) {
-                    passwordErrorDiv.textContent = 'Security token is still loading. Please try again.';
+                    passwordErrorDiv.textContent = 'Security token is still loading. Please try again in a moment.';
                     loadCsrfToken();
                     isValid = false;
                 }

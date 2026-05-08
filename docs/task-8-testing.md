@@ -55,11 +55,11 @@ Invalid form validation:
 
 1. Open `login.html`.
 2. Submit with an empty email.
-3. Expected result: `Email address is required`.
+3. Expected result: `Please enter your email address.`
 4. Enter an invalid email such as `not-an-email`.
-5. Expected result: `Please enter a valid email address`.
+5. Expected result: `Please enter a valid email address.`
 6. Submit with an empty password.
-7. Expected result: `Password is required`.
+7. Expected result: `Please enter your password.`
 
 Checkout validation:
 

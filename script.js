@@ -7,6 +7,7 @@ const CURRENT_PAGE = window.location.pathname.split('/').pop() || 'landing.html'
 function redirectToLogin() {
     if (CURRENT_PAGE === LOGIN_PAGE_URL) return;
 
+    // Preserve the original destination so the app can return the user after login.
     const redirectTarget = `${window.location.pathname}${window.location.search}`;
     window.location.href = `${LOGIN_PAGE_URL}?redirect=${encodeURIComponent(redirectTarget)}`;
 }
@@ -41,6 +42,7 @@ function showAccessDeniedMessage(message = 'Access Denied') {
 
 async function authFetch(url, options = {}) {
     const response = await fetch(url, {
+        // Session auth depends on the browser sending the HttpOnly JSESSIONID cookie.
         credentials: 'same-origin',
         ...options,
         headers: {
@@ -49,11 +51,13 @@ async function authFetch(url, options = {}) {
     });
 
     if (response.status === 401) {
+        // 401 means there is no valid session, so the user must sign in.
         redirectToLogin();
         throw new Error('Unauthorized');
     }
 
     if (response.status === 403) {
+        // 403 means the session exists but the user lacks permission for this resource.
         showAccessDeniedMessage('Access Denied: you do not have permission to view this page.');
         throw new Error('Forbidden');
     }
@@ -72,6 +76,7 @@ async function requireLoggedIn() {
     protectedContent.style.display = 'none';
 
     try {
+        // A lightweight user-info request verifies that the server recognizes the session cookie.
         const response = await authFetch(authCheckUrl, {
             method: 'GET',
             headers: {
@@ -524,36 +529,36 @@ function validateCheckoutForm() {
     
     // Validate each required field
     if (!fullName) {
-        showFieldError('fullName', 'Full name is required');
+        showFieldError('fullName', 'Please enter your full name.');
         isValid = false;
     }
     
     if (!country) {
-        showFieldError('country', 'Country is required');
+        showFieldError('country', 'Please enter your country.');
         isValid = false;
     }
     
     if (!province) {
-        showFieldError('province', 'Province is required');
+        showFieldError('province', 'Please enter your province.');
         isValid = false;
     }
     
     if (!city) {
-        showFieldError('city', 'Municipality/City is required');
+        showFieldError('city', 'Please enter your municipality or city.');
         isValid = false;
     }
     
     if (!street) {
-        showFieldError('street', 'Street/Barangay is required');
+        showFieldError('street', 'Please enter your street or barangay.');
         isValid = false;
     }
     
     // Validate zip code - must be present and numeric with at least 4 digits
     if (!zip) {
-        showFieldError('zip', 'Zip code is required');
+        showFieldError('zip', 'Please enter your zip code.');
         isValid = false;
     } else if (zip && (zip.length < 4 || isNaN(zip))) {
-        showFieldError('zip', 'Please enter a valid zip code');
+        showFieldError('zip', 'Please enter a valid numeric zip code with at least 4 digits.');
         isValid = false;
     }
     
@@ -565,7 +570,7 @@ function validateCheckoutForm() {
         isValid = false;
         const paymentCard = document.querySelector('.payment-card');
         const errorMsg = document.createElement('small');
-        errorMsg.textContent = 'Please select a payment method';
+        errorMsg.textContent = 'Please choose a payment method.';
         errorMsg.classList.add('error-message');
         errorMsg.style.color = '#dc3545';
         errorMsg.style.display = 'block';
