@@ -1,4 +1,97 @@
 // ============================================================================
+// TASK 7: AUTHENTICATED FETCH WRAPPER & PROTECTED ROUTES
+// ============================================================================
+const LOGIN_PAGE_URL = 'login.html';
+const CURRENT_PAGE = window.location.pathname.split('/').pop() || 'landing.html';
+
+function redirectToLogin() {
+    if (CURRENT_PAGE === LOGIN_PAGE_URL) return;
+
+    const redirectTarget = `${window.location.pathname}${window.location.search}`;
+    window.location.href = `${LOGIN_PAGE_URL}?redirect=${encodeURIComponent(redirectTarget)}`;
+}
+
+function showAccessDeniedMessage(message = 'Access Denied') {
+    const protectedContent = document.querySelector('[data-protected-content]');
+    if (protectedContent) {
+        protectedContent.style.display = 'none';
+    }
+
+    let accessDenied = document.getElementById('access-denied-message');
+    if (!accessDenied) {
+        accessDenied = document.createElement('div');
+        accessDenied.id = 'access-denied-message';
+        accessDenied.setAttribute('role', 'alert');
+        accessDenied.style.cssText = `
+            max-width: 720px;
+            margin: 3rem auto;
+            padding: 1.5rem;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            background: #fff5f5;
+            color: #842029;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            text-align: center;
+        `;
+        document.body.appendChild(accessDenied);
+    }
+
+    accessDenied.textContent = message;
+}
+
+async function authFetch(url, options = {}) {
+    const response = await fetch(url, {
+        credentials: 'same-origin',
+        ...options,
+        headers: {
+            ...(options.headers || {})
+        }
+    });
+
+    if (response.status === 401) {
+        redirectToLogin();
+        throw new Error('Unauthorized');
+    }
+
+    if (response.status === 403) {
+        showAccessDeniedMessage('Access Denied: you do not have permission to view this page.');
+        throw new Error('Forbidden');
+    }
+
+    return response;
+}
+
+window.authFetch = authFetch;
+
+async function requireLoggedIn() {
+    const protectedContent = document.querySelector('[data-protected-content]');
+    const authCheckUrl = document.body?.dataset.authCheckUrl || '/api/user/me';
+
+    if (!protectedContent) return true;
+
+    protectedContent.style.display = 'none';
+
+    try {
+        const response = await authFetch(authCheckUrl, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            showAccessDeniedMessage('Access Denied: unable to verify your session.');
+            return false;
+        }
+
+        protectedContent.style.display = '';
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+// ============================================================================
 // PRODUCT CLASS & DATA STRUCTURE
 // ============================================================================
 // Product class to define the structure of each product in our store
@@ -968,7 +1061,13 @@ function setupLandingPage() {
 }
 
 // Sets up checkout page event listeners
-function setupCheckoutPage() {
+async function setupCheckoutPage() {
+    const checkoutGrid = document.querySelector('.checkout-grid');
+    if (!checkoutGrid) return;
+
+    const isLoggedIn = await requireLoggedIn();
+    if (!isLoggedIn) return;
+
     const placeOrderBtn = document.getElementById('placeOrderBtn');
     if (placeOrderBtn) {
         placeOrderBtn.addEventListener('click', (e) => {

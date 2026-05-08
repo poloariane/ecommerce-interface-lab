@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/checkout.css">
 </head>
-<body>
+<body data-auth-check-url="/api/user/me">
     <header>
         <a id="lg"><h2>MyShop-Pay</h2></a>
         <nav>
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="checkout-grid">
+        <div class="checkout-grid" data-protected-content>
             <div class="shipping-card">
                 <h2>Shipping Information</h2>
                 <div class="form-group">
