@@ -1,0 +1,527 @@
+/* ============================================
+   login.css - Complete styling matching MyShop-Pay design
+   Colors, animations, responsive layout from existing theme
+   ============================================ */
+:root {
+    --primary-color: #56156f;
+    --accent-color: #a818b5;
+    --bg-light: #eeeeeec9;
+    --bg-dark: #290627f7;
+    --text-main: #2c2c2c;
+    --text-light: #fff;
+    --text-hover: #a4a4a4;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --border-radius-card: 1.5rem;
+    --shadow-card: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: linear-gradient(145deg, #f5f3f7 0%, #eae6f0 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-main);
+}
+
+/* login main container */
+.login-page-container {
+    max-width: 1280px;
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+    flex: 1;
+}
+
+/* header style similar to cart/checkout but more compact */
+.login-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.brand-home-link {
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.brand-home-link:hover {
+    transform: scale(1.02);
+}
+
+.brand-icon-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.store-icon {
+    font-size: 2rem;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+.brand-icon-title h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    letter-spacing: -0.3px;
+    margin: 0;
+}
+
+.header-links .create-account-link {
+    background-color: transparent;
+    border: 1.5px solid var(--primary-color);
+    padding: 0.55rem 1.3rem;
+    border-radius: 40px;
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.header-links .create-account-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* main card layout - 2 columns */
+.login-main-card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    background-color: white;
+    border-radius: var(--border-radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 2rem;
+    transition: all 0.3s;
+}
+
+/* left decorative side - brand appeal */
+.login-left-decoration {
+    background: linear-gradient(135deg, var(--bg-dark), #2c0b2f);
+    padding: 2.5rem 2rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.welcome-greeting .wave-emoji {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.welcome-greeting h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: white;
+    letter-spacing: -0.2px;
+}
+
+.welcome-greeting p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.trust-badge {
+    margin-top: 2rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(4px);
+    border-radius: 60px;
+    padding: 0.6rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* right side form */
+.login-form-wrapper {
+    padding: 2.2rem 2rem;
+    background: white;
+}
+
+.form-header {
+    margin-bottom: 1.8rem;
+}
+
+.signin-title-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.3rem;
+}
+
+.login-icon {
+    font-size: 1.8rem;
+}
+
+.signin-title-icon h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.subheadline {
+    color: #5f5c6e;
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    background-color: #fefefe;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(168, 24, 181, 0.1);
+}
+
+.input-field.error {
+    border-color: var(--error-color);
+    background-color: #fff8f8;
+}
+
+/* password wrapper with toggle */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper .input-field {
+    padding-right: 3rem;
+}
+
+.toggle-password-visibility {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 6px;
+    border-radius: 30px;
+    transition: background 0.2s;
+}
+
+.toggle-password-visibility:hover {
+    background-color: #f0f0f0;
+}
+
+.field-error {
+    font-size: 0.7rem;
+    color: var(--error-color);
+    margin-top: 0.35rem;
+    min-height: 1.2rem;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.8rem 0 1.5rem;
+}
+
+.checkbox-remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #4a4a5a;
+    cursor: pointer;
+}
+
+.checkbox-remember input {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--primary-color);
+}
+
+.forgot-pw-link {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-pw-link:hover {
+    text-decoration: underline;
+}
+
+.login-submit-btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.login-submit-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(86, 21, 111, 0.25);
+}
+
+.demo-credentials-hint {
+    background-color: #f8f5fc;
+    border-radius: 20px;
+    padding: 0.9rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.demo-note {
+    font-size: 0.7rem;
+    color: #6c5c7c;
+    margin-bottom: 0.4rem;
+}
+
+.demo-badge {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.75rem;
+    font-family: monospace;
+    background: white;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    border: 1px dashed var(--primary-color);
+}
+
+.demo-badge span {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.signup-redirect {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+}
+
+.signup-redirect a {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.signup-redirect a:hover {
+    text-decoration: underline;
+}
+
+.alternative-login {
+    margin-top: 1.5rem;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.75rem;
+    margin: 1rem 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.divider span {
+    margin: 0 1rem;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.3rem;
+    border-radius: 40px;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    font-weight: 500;
+    cursor: not-allowed;
+    opacity: 0.6;
+    font-size: 0.85rem;
+}
+
+.social-btn span {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* login footer */
+.login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    font-size: 0.75rem;
+    color: #5a5a6e;
+    border-top: 1px solid rgba(86, 21, 111, 0.1);
+}
+
+.login-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 880px) {
+    .login-main-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .login-left-decoration {
+        text-align: center;
+        align-items: center;
+        padding: 1.8rem;
+    }
+    
+    .trust-badge {
+        margin-top: 1rem;
+    }
+    
+    .login-form-wrapper {
+        padding: 1.8rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .login-page-container {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+    
+    .brand-icon-title h1 {
+        font-size: 1.4rem;
+    }
+    
+    .store-icon {
+        font-size: 1.6rem;
+    }
+    
+    .login-form-wrapper {
+        padding: 1.2rem;
+    }
+    
+    .signin-title-icon h3 {
+        font-size: 1.5rem;
+    }
+    
+    .demo-badge {
+        flex-direction: column;
+        gap: 0.2rem;
+        align-items: center;
+    }
+    
+    .social-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-btn {
+        width: 80%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-links .create-account-link {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .login-submit-btn {
+        padding: 0.75rem;
+    }
+}
+
+/* subtle animation for card */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-main-card {
+    animation: fadeSlideUp 0.5s ease-out;
+}
+
+/* toast like quick alerts */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-weight: 500;
+    z-index: 1100;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}

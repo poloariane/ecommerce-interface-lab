@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Sign In | MyShop-Pay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-page-container">
+        <div class="login-header">
+            <a href="landing.html" class="brand-home-link">
+                <div class="brand-icon-title">
+                    <span class="store-icon" aria-hidden="true"></span>
+                    <h1>MyShop-Pay</h1>
+                </div>
+            </a>
+            <div class="header-links">
+                <a href="signup.html" class="create-account-link">Create account</a>
+            </div>
+        </div>
+
+        <div class="login-main-card">
+            <div class="login-left-decoration">
+                <div class="welcome-greeting">
+                    <span class="wave-emoji" aria-hidden="true"></span>
+                    <h2>Welcome!</h2>
+                    <p>Sign in to access your account, orders & wishlist</p>
+                </div>
+                <div class="trust-badge">
+                    <span class="secure-icon" aria-hidden="true"></span>
+                    <small>Secure checkout | Session protected</small>
+                </div>
+            </div>
+
+            <div class="login-form-wrapper">
+                <div class="form-header">
+                    <div class="signin-title-icon">
+                        <span class="login-icon" aria-hidden="true"></span>
+                        <h3>Sign in</h3>
+                    </div>
+                    <p class="subheadline">Enter your credentials to continue</p>
+                </div>
+
+                <form id="login-form" action="/login" method="post" novalidate>
+                    <input type="hidden" id="csrf-token" name="_csrf" value="">
+
+                    <div class="form-group">
+                        <label for="login-email">Email address</label>
+                        <input
+                            type="email"
+                            id="login-email"
+                            name="username"
+                            class="input-field"
+                            placeholder="hello@example.com"
+                            autocomplete="email"
+                            required
+                        >
+                        <div class="field-error" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="password-wrapper">
+                            <input
+                                type="password"
+                                id="login-password"
+                                name="password"
+                                class="input-field"
+                                placeholder="Password"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <button type="button" id="togglePassword" class="toggle-password-visibility" aria-label="Show password">
+                                <span class="eye-icon" aria-hidden="true">Show</span>
+                            </button>
+                        </div>
+                        <div class="field-error" id="passwordError"></div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-remember">
+                            <input type="checkbox" id="remember-me">
+                            <span>Keep my email on this device</span>
+                        </label>
+                        <a href="#" class="forgot-pw-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="login-submit-btn" id="login-btn">Sign In</button>
+
+                    <div class="signup-redirect">
+                        <p>Don't have an account? <a href="signup.html">Join MyShop-Pay</a></p>
+                    </div>
+                </form>
+
+                <div class="alternative-login">
+                    <div class="divider">
+                        <span>or continue with</span>
+                    </div>
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn google" disabled aria-label="Google login disabled">
+                            <span>G</span> Google
+                        </button>
+                        <button type="button" class="social-btn apple" disabled aria-label="Apple login disabled">
+                            <span>A</span> Apple
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="login-footer">
+            <p>2025 MyShop-Pay | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        (function() {
+            const loginForm = document.getElementById('login-form');
+            const emailInput = document.getElementById('login-email');
+            const passwordInput = document.getElementById('login-password');
+            const toggleBtn = document.getElementById('togglePassword');
+            const emailErrorDiv = document.getElementById('emailError');
+            const passwordErrorDiv = document.getElementById('passwordError');
+            const rememberCheckbox = document.getElementById('remember-me');
+            const csrfInput = document.getElementById('csrf-token');
+
+            function clearFieldError(inputElement, errorContainer) {
+                if (inputElement) inputElement.classList.remove('error');
+                if (errorContainer) errorContainer.textContent = '';
+            }
+
+            function setCsrfTokenFromDocument(doc) {
+                const tokenField = doc.querySelector('input[name="_csrf"]');
+                const tokenMeta = doc.querySelector('meta[name="_csrf"]');
+                const parameterMeta = doc.querySelector('meta[name="_csrf_parameter"]');
+                const token = tokenField?.value || tokenMeta?.content || '';
+                const parameterName = tokenField?.name || parameterMeta?.content || '_csrf';
+
+                if (token && csrfInput) {
+                    csrfInput.name = parameterName;
+                    csrfInput.value = token;
+                }
+            }
+
+            async function loadCsrfToken() {
+                setCsrfTokenFromDocument(document);
+
+                if (csrfInput?.value) return;
+
+                try {
+                    const response = await fetch('/login', {
+                        method: 'GET',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Accept': 'text/html'
+                        }
+                    });
+
+                    if (!response.ok) return;
+
+                    const html = await response.text();
+                    const doc = new DOMParser().parseFromString(html, 'text/html');
+                    setCsrfTokenFromDocument(doc);
+                } catch (error) {
+                    console.warn('Unable to load CSRF token from /login.', error);
+                }
+            }
+
+            function validateBeforeSubmit(event) {
+                let isValid = true;
+                const email = emailInput?.value.trim() || '';
+                const password = passwordInput?.value || '';
+
+                clearFieldError(emailInput, emailErrorDiv);
+                clearFieldError(passwordInput, passwordErrorDiv);
+
+                if (!email) {
+                    emailErrorDiv.textContent = 'Email address is required';
+                    emailInput.classList.add('error');
+                    isValid = false;
+                } else if (!email.includes('@') || !email.includes('.')) {
+                    emailErrorDiv.textContent = 'Please enter a valid email address';
+                    emailInput.classList.add('error');
+                    isValid = false;
+                }
+
+                if (!password) {
+                    passwordErrorDiv.textContent = 'Password is required';
+                    passwordInput.classList.add('error');
+                    isValid = false;
+                }
+
+                if (!csrfInput?.value) {
+                    passwordErrorDiv.textContent = 'Security token is still loading. Please try again.';
+                    loadCsrfToken();
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    event.preventDefault();
+                    return;
+                }
+
+                if (rememberCheckbox?.checked) {
+                    localStorage.setItem('rememberedUser', email);
+                } else {
+                    localStorage.removeItem('rememberedUser');
+                }
+            }
+
+            toggleBtn?.addEventListener('click', function(event) {
+                event.preventDefault();
+                const isHidden = passwordInput.getAttribute('type') === 'password';
+                passwordInput.setAttribute('type', isHidden ? 'text' : 'password');
+                toggleBtn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+                const label = toggleBtn.querySelector('.eye-icon');
+                if (label) label.textContent = isHidden ? 'Hide' : 'Show';
+            });
+
+            emailInput?.addEventListener('input', () => clearFieldError(emailInput, emailErrorDiv));
+            passwordInput?.addEventListener('input', () => clearFieldError(passwordInput, passwordErrorDiv));
+            loginForm?.addEventListener('submit', validateBeforeSubmit);
+
+            const remembered = localStorage.getItem('rememberedUser');
+            if (remembered && emailInput) {
+                emailInput.value = remembered;
+                if (rememberCheckbox) rememberCheckbox.checked = true;
+            }
+
+            loadCsrfToken();
+        })();
+    </script>
+</body>
+</html>
