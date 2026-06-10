@@ -98,3 +98,10 @@ Recommended Postman flow:
 - `checkout.html`: protected checkout page using `/api/user/me`.
 - `docs/task-8-testing.md`: manual testing checklist.
 - `postman/session-auth-csrf.postman_collection.json`: Postman collection for session and CSRF testing.
+
+## Authors
+Abundo, Clarissa Mae T. &
+Polo, Ariane C.
+
+## License
+This project is part of the Web Systems 101 course
